@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guarded Delivery"
+  short_description: "Risk-adaptive engineering delivery with project guardrails"
+  default_prompt: "Use $guarded-delivery to implement this request with risk-appropriate project constraints and verification."
