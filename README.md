@@ -31,11 +31,40 @@
 
 也可以直接描述任务，由 Agent 根据 skill 的触发条件决定是否使用。
 
+### `adapt-frontend-project`
+
+低频、显式调用的前端仓库发现与适配 skill。它用于在高不确定性前先识别真实工程约定，再用一个代表性垂直切片验证后续方案。
+
+适用场景：
+
+- 接手陌生前端仓库，需要识别真实工程规范
+- 初始化或标准化缺少基础能力的前端项目
+- 新增跨状态、请求、组件和测试的代表性功能
+- 需要先用一个垂直切片验证工程方案
+
+不适用场景：
+
+- 普通页面开发、单文件修改或样式调整
+- 范围明确的小 Bug
+- 已有清晰模式的常规功能
+
+使用方式：
+
+```text
+使用 $adapt-frontend-project 探索这个前端仓库，并先验证一个代表性垂直切片。
+```
+
 ## 目录结构
 
 ```text
 .
 ├── README.md
+├── adapt-frontend-project/
+│   ├── SKILL.md                 # Skill 主说明与执行流程
+│   ├── agents/openai.yaml       # Agent 展示信息与默认提示词
+│   ├── assets/governance/       # 工程规范与 Agent 适配模板
+│   ├── references/              # 新建、既有项目和标准化流程
+│   └── scripts/                 # 项目上下文扫描工具
 └── guarded-delivery/
     ├── SKILL.md                 # Skill 主说明与执行流程
     ├── agents/openai.yaml       # Agent 展示信息与默认提示词
@@ -49,6 +78,7 @@
 - `SKILL.md`：名称、触发描述和完整工作流
 - `agents/openai.yaml`：面向 Agent 的展示信息
 - `references/`：仅在需要拆分详细规则时使用
+- `assets/` 与 `scripts/`：按需提供可复用模板和受控辅助工具
 
 新增 skill 时，请同步更新本 README 的“当前 Skills”和目录结构说明。
 
@@ -58,4 +88,3 @@
 - 保持每个 skill 的边界清晰，避免重复覆盖
 - 只记录已验证的命令、路径和项目事实
 - 对未验证内容、环境限制和剩余风险明确标注
-
