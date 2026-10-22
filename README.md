@@ -68,13 +68,14 @@
 
 ## 唯一数据源与本机入口
 
-本仓库是 `interactive-knowledge` 的唯一维护源，GitHub `main` 保存已提交版本。只想使用这一项 Skill，可以单独安装：
+本仓库是 `interactive-knowledge` 的唯一维护源，GitHub `main` 保存已提交版本。只想使用这一项 Skill，直接把下面这段话发给你的编程 Agent：
 
-```sh
-npx skills add iiLsss/diqiu-skills --skill interactive-knowledge --global
+```text
+请帮我将这个 Skill 安装到当前 Agent 的全局 Skills 目录，只安装 interactive-knowledge，保留完整的模板、脚本和参考资料，并确认安装后可以被发现：
+https://github.com/iiLsss/diqiu-skills/tree/main/interactive-knowledge
 ```
 
-安装命令需要 Node.js 22.20+ 和 Git；按提示选择客户端。项目级安装、指定客户端和更新命令见 [Skill 安装说明](interactive-knowledge/README.md#安装)。
+Agent 会使用自己的安装方式。项目级安装和可选的终端安装、更新命令见 [Skill 安装说明](interactive-knowledge/README.md#安装)。
 
 本机维护环境的各客户端通过软链接使用当前仓库检出中的同一份文件，不再维护安装副本。修改在本仓库进行，验证后提交并推送；采用此方式的其他机器通过 `git pull --ff-only` 更新。生成的用户项目放在仓库之外。
 

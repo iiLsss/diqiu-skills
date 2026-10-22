@@ -4,7 +4,19 @@
 
 ## 安装
 
-可以从 GitHub **单独安装这一项 Skill**，无需先手动克隆整个仓库。以下命令使用 [skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js 22.20+（含 npm/npx）和 Git；生成作品另需 Python 3。
+直接把下面这段话发给你使用的编程 Agent：
+
+```text
+请帮我将这个 Skill 安装到当前 Agent 的全局 Skills 目录，只安装 interactive-knowledge，保留完整的模板、脚本和参考资料，并确认安装后可以被发现：
+https://github.com/iiLsss/diqiu-skills/tree/main/interactive-knowledge
+```
+
+Agent 根据自己的 Skill 安装机制完成操作，无需你先手动克隆仓库或运行终端命令。如果只想在当前项目中使用，把“全局 Skills 目录”改为“当前项目的 Skills 目录”。
+
+<details>
+<summary>手动安装与更新（终端命令）</summary>
+
+也可以使用 [skills CLI](https://github.com/vercel-labs/skills) 单独安装。以下命令需要 Node.js 22.20+（含 npm/npx）和 Git；生成作品另需 Python 3。
 
 全局安装，供多个项目使用：
 
@@ -32,6 +44,8 @@ npx skills update interactive-knowledge --global
 ```
 
 项目级安装使用 `npx skills list` 查看，使用 `npx skills update interactive-knowledge --project` 更新。安装后在编程助手的新对话中使用；应完整安装 Skill 目录，保留 `assets/`、`scripts/` 和 `references/`，只下载 `SKILL.md` 无法运行模板。
+
+</details>
 
 如果需要直接维护源码、让多个本机客户端共用同一份仓库检出，使用[仓库软链接安装方式](https://github.com/iiLsss/diqiu-skills#唯一数据源与本机入口)。已采用该方式的机器继续在仓库执行 `git pull --ff-only` 更新，无需再执行上面的安装命令。
 
