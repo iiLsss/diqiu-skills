@@ -64,7 +64,7 @@
 使用 $interactive-knowledge，面向小学生，把“冰为什么浮在水上？”做成能互动、能批注修改的讲解，跑起来看看。
 ```
 
-工作流和模板契约见 [Skill 说明](interactive-knowledge/SKILL.md)。它用于互动知识作品；普通经营报告和纯知识问答不在此 Skill 范围内。
+安装后的使用与运行方式见 [使用说明](interactive-knowledge/README.md)，执行规则见 [Skill 说明](interactive-knowledge/SKILL.md)。它用于互动知识作品；普通经营报告和纯知识问答不在此 Skill 范围内。
 
 ## 唯一数据源与本机入口
 
@@ -105,6 +105,7 @@ DeepSeek Harness 使用共享入口 `~/.agents/skills`；Codex 和 Antigravity �
 │   ├── agents/openai.yaml       # Agent 展示信息与默认提示词
 │   └── references/              # 风险路由、项目模式和验证门槛
 └── interactive-knowledge/
+    ├── README.md                # 使用、运行与维护说明
     ├── SKILL.md                 # 互动知识作品工作流
     ├── agents/openai.yaml       # Agent 展示信息
     ├── assets/starter/          # 独立可运行模板与测试
