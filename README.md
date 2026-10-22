@@ -54,6 +54,41 @@
 使用 $adapt-frontend-project 探索这个前端仓库，并先验证一个代表性垂直切片。
 ```
 
+### `interactive-knowledge`
+
+把知识点或已有讲解制作成可运行的互动知识网页，支持操作验证、预测、按位置批注、定点修改和项目导出。包含独立 Node.js 20+ 模板、初始化脚本和模型及后端测试，无需安装 npm 包。
+
+使用方式：
+
+```text
+使用 $interactive-knowledge，面向小学生，把“冰为什么浮在水上？”做成能互动、能批注修改的讲解，跑起来看看。
+```
+
+工作流和模板契约见 [Skill 说明](interactive-knowledge/SKILL.md)。它用于互动知识作品；普通经营报告和纯知识问答不在此 Skill 范围内。
+
+## 唯一数据源与本机入口
+
+本仓库是 `interactive-knowledge` 的唯一维护源，GitHub `main` 保存已提交版本。本机各客户端通过软链接使用当前仓库检出中的同一份文件，不再维护安装副本。修改在本仓库进行，验证后提交并推送；其他机器通过 `git pull --ff-only` 更新。生成的用户项目放在仓库之外。
+
+在仓库根目录执行以下命令，可为尚未安装该 Skill 的机器建立入口（已有同名目录时命令会停止，应先核对，避免覆盖）：
+
+```sh
+(
+for entry in "$HOME/.agents/skills/interactive-knowledge" "$HOME/.codex/skills/interactive-knowledge" "$HOME/.gemini/config/skills/interactive-knowledge"; do
+  if [ -e "$entry" ] || [ -L "$entry" ]; then
+    printf '已有入口，请先核对：%s\n' "$entry"
+    exit 1
+  fi
+done
+mkdir -p "$HOME/.agents/skills" "$HOME/.codex/skills" "$HOME/.gemini/config/skills"
+ln -s "$PWD/interactive-knowledge" "$HOME/.agents/skills/interactive-knowledge" &&
+ln -s "$HOME/.agents/skills/interactive-knowledge" "$HOME/.codex/skills/interactive-knowledge" &&
+ln -s "$HOME/.agents/skills/interactive-knowledge" "$HOME/.gemini/config/skills/interactive-knowledge"
+)
+```
+
+DeepSeek Harness 使用共享入口 `~/.agents/skills`；Codex 和 Antigravity 使用各自入口。仓库移动后需要更新共享软链接。模板运行要求 Python 3 和 Node.js 20+。
+
 ## 目录结构
 
 ```text
@@ -65,10 +100,16 @@
 │   ├── assets/governance/       # 工程规范与 Agent 适配模板
 │   ├── references/              # 新建、既有项目和标准化流程
 │   └── scripts/                 # 项目上下文扫描工具
-└── guarded-delivery/
-    ├── SKILL.md                 # Skill 主说明与执行流程
-    ├── agents/openai.yaml       # Agent 展示信息与默认提示词
-    └── references/              # 风险路由、项目模式和验证门槛
+├── guarded-delivery/
+│   ├── SKILL.md                 # Skill 主说明与执行流程
+│   ├── agents/openai.yaml       # Agent 展示信息与默认提示词
+│   └── references/              # 风险路由、项目模式和验证门槛
+└── interactive-knowledge/
+    ├── SKILL.md                 # 互动知识作品工作流
+    ├── agents/openai.yaml       # Agent 展示信息
+    ├── assets/starter/          # 独立可运行模板与测试
+    ├── references/              # 互动设计、模板契约与批注改稿
+    └── scripts/init_demo.py     # 初始化独立项目
 ```
 
 ## Skill 目录约定

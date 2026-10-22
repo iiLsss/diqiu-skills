@@ -1,0 +1,4 @@
+interface:
+  display_name: "互动知识讲解"
+  short_description: "把日常、学习等知识做成能操作、能预测、能批注修改的本地互动讲解"
+  default_prompt: "使用 $interactive-knowledge，把一个知识点做成可运行、可批注修改的互动讲解。"
