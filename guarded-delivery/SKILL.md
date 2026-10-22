@@ -1,6 +1,6 @@
 ---
 name: guarded-delivery
-description: Apply risk-adaptive engineering delivery to new software projects and changes in existing repositories. Use for project creation, feature implementation, bug fixes, refactors, architecture changes, or other coding work that must balance agent autonomy with project-specific guardrails, staged delivery, and real verification. Classify work into Fast, Guarded, or Gated execution; establish or refine AGENTS.md when appropriate; validate a representative feature before scaling new architecture; and preserve existing conventions during maintenance.
+description: Apply risk-adaptive engineering delivery to new software projects and changes in existing repositories. Use for project creation, feature implementation, bug fixes, refactors, architecture changes, or other coding work that must balance agent autonomy with project-specific guardrails, staged delivery, and real verification. Classify work into Fast, Guarded, or Gated execution; establish an explicit project constraint structure and gate when required; validate a representative feature before scaling new architecture; and preserve existing conventions during maintenance.
 ---
 
 # Guarded Delivery
@@ -13,8 +13,9 @@ Deliver software with the least process that safely fits the change. Constrain p
 2. Read exactly one project-mode guide:
    - [new-project.md](references/new-project.md) for a new repository, an unestablished application, or a genuinely new architecture.
    - [existing-project.md](references/existing-project.md) for changes within an established repository.
-3. Read [project-guardrails.md](references/project-guardrails.md) before creating or changing `AGENTS.md`, `CLAUDE.md`, architecture documentation, or nested project instructions.
-4. Read [gate-catalog.md](references/gate-catalog.md) when selecting or executing validation.
+3. Read [project-constraint-gate.md](references/project-constraint-gate.md) for every new project or new architecture, and whenever project guidance is absent, provisional, or materially stale.
+4. Read [project-guardrails.md](references/project-guardrails.md) before creating or changing `AGENTS.md`, `CLAUDE.md`, architecture documentation, or nested project instructions.
+5. Read [gate-catalog.md](references/gate-catalog.md) when selecting or executing validation.
 
 Do not load irrelevant references merely because they are available.
 
@@ -28,8 +29,9 @@ Before material edits:
    - delivery lane: Fast, Guarded, or Gated;
    - authoritative sources and unresolved contradictions;
    - required validation gates;
-   - whether a durable project constraint must be created or changed.
-3. State the classification and evidence compactly. For Fast work, one sentence is enough. For Guarded or Gated work, state the boundaries and gates before implementation.
+   - project-constraint status: absent, provisional, usable, or stale;
+   - the constraint artifacts that must be created, updated, or intentionally skipped.
+3. State the classification and evidence compactly. For Fast work, one sentence is enough. For Guarded or Gated work, state the boundaries, project-constraint action, and validation gates before implementation.
 
 Do not ask for confirmation merely to restate an obvious, reversible choice. Follow the escalation rules in `risk-routing.md`.
 
@@ -58,13 +60,14 @@ Define the change boundary, state ownership, data flow, and verification approac
 
 ### Gated
 
-Complete discovery and record the material decision before scaling implementation. Establish a runnable foundation when missing, validate new architecture with one representative vertical slice, review the architecture, and only then expand to remaining work. Obtain user direction only for the decision classes that require it.
+Complete discovery and record the material decision before scaling implementation. Establish a runnable foundation when missing. For a new project or architecture, pass the Project Constraint Gate before the representative vertical slice. Validate the architecture with that slice, review it, and only then expand to remaining work. Obtain user direction only for the decision classes that require it.
 
 ## Maintain durable project guidance
 
 Keep workflow policy in this skill and repository facts in project instructions.
 
 - Generate project guidance from verified repository reality, never by blindly copying a framework template.
+- For a new project or architecture, create the applicable recommended constraint artifacts as deliverables; do not merely suggest that the user create them later.
 - Keep `AGENTS.md` concise and factual.
 - Record detailed architecture or major decisions outside `AGENTS.md`.
 - Update durable guidance only when commands, boundaries, stable patterns, or recurring corrections change.
@@ -75,6 +78,7 @@ Keep workflow policy in this skill and repository facts in project instructions.
 Report:
 
 - selected project mode and delivery lane;
+- project-constraint status and artifacts created, updated, or skipped;
 - material files or artifacts changed;
 - validation that ran and its result;
 - skipped or unavailable validation;
@@ -82,3 +86,7 @@ Report:
 - whether the evidence permits the next phase.
 
 Do not declare project completion before all required gates for the selected lane pass.
+
+## Provide usage help
+
+When the user asks how to install, invoke, combine, or troubleshoot this skill, direct them to [USAGE.md](USAGE.md). Do not load the usage guide during normal delivery work.

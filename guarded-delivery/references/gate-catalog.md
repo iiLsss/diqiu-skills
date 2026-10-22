@@ -23,6 +23,7 @@ Select gates by changed behavior and risk. Existing project commands are authori
 | Build or dependency configuration | clean install when warranted, lint, typecheck, tests, production build |
 | Deployment | environment validation, build artifact, rollout and recovery checks |
 | Architecture boundary | dependency check, representative slice, full relevant suite, architecture review |
+| Project constraint structure | artifact presence, factual command check, boundary consistency, explicit skipped-artifact reasons |
 
 ## Lane expectations
 
@@ -36,7 +37,7 @@ Require tests for the changed behavior, relevant static checks, integration or U
 
 ### Gated
 
-Require baseline foundation checks before the representative slice, all relevant domain gates after it, architecture review, and the project's release-level aggregate check before completion.
+Require the Project Constraint Gate and baseline foundation checks before the representative slice, all relevant domain gates after it, architecture review, and the project's release-level aggregate check before completion.
 
 ## Interface verification
 

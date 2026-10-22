@@ -41,7 +41,10 @@ When a required change would enlarge a mixed-responsibility file, extract only t
 ## Handle missing project guidance
 
 - Do not create `AGENTS.md` merely as ceremony for a trivial Fast change.
-- For Guarded or Gated work, create concise project guidance when it is missing and the discovered facts will materially improve future maintenance.
+- Classify project guidance as absent, provisional, usable, or stale before Guarded or Gated work.
+- Read [project-constraint-gate.md](project-constraint-gate.md) when guidance is absent or stale, or when the change creates a new durable boundary.
+- For Guarded work, create the smallest durable guidance needed for the affected boundary when it is missing.
+- For Gated work, make constraint creation or repair an explicit phase before scaling implementation.
 - Update existing guidance only when it is inaccurate, a stable boundary changed, a real command changed, or repeated correction should persist.
 - Preserve valid user-authored rules and resolve conflicts explicitly.
 

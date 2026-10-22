@@ -49,9 +49,15 @@ Create the smallest runnable skeleton that proves the selected stack:
 
 Run baseline commands. Do not document commands that do not exist.
 
-## 5. Create provisional project guidance
+## 5. Pass the Project Constraint Gate
 
-After the skeleton and commands are real, create a concise provisional `AGENTS.md` using [project-guardrails.md](project-guardrails.md). Mark uncertain architecture as provisional in the architecture document, not as a false project fact.
+After the skeleton and commands are real, read and execute [project-constraint-gate.md](project-constraint-gate.md).
+
+Create the applicable recommended constraint structure, including a concise provisional `AGENTS.md`, architecture guidance, real checks, and persistent planning or decision records when warranted. Add the thin Claude adapter when cross-agent use is in scope.
+
+Do not merely tell the user that these files are recommended. Create them during implementation-capable work. Mark uncertain architecture as provisional in the architecture document, not as a false project fact.
+
+Do not begin the representative slice until the Project Constraint Gate passes.
 
 ## 6. Validate one representative slice
 
