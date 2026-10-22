@@ -2,9 +2,40 @@
 
 把一个知识点做成可以亲手操作的本地网页：改变条件、观察结果、验证预测，再通过批注持续修改讲解。适合日常知识、学习和科普主题；普通经营报告、纯文字问答和静态插图不在此 Skill 的范围内。
 
-## 在编程助手中使用
+## 安装
 
-安装入口见[仓库安装说明](../README.md#唯一数据源与本机入口)。Codex、DeepSeek Harness 和 Antigravity 通过软链接共用仓库中的文件。
+可以从 GitHub **单独安装这一项 Skill**，无需先手动克隆整个仓库。以下命令使用 [skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js 22.20+（含 npm/npx）和 Git；生成作品另需 Python 3。
+
+全局安装，供多个项目使用：
+
+```sh
+npx skills add iiLsss/diqiu-skills --skill interactive-knowledge --global
+```
+
+按提示选择要使用的编程助手；`--skill interactive-knowledge` 只安装这一项，不安装仓库中的其他 Skills。只用于当前项目时，在该项目根目录执行：
+
+```sh
+npx skills add iiLsss/diqiu-skills --skill interactive-knowledge
+```
+
+也可以直接指定客户端，例如仅安装到 Codex 的全局目录：
+
+```sh
+npx skills add iiLsss/diqiu-skills --skill interactive-knowledge --global --agent codex
+```
+
+查看全局安装结果，以及从 GitHub 更新这一项：
+
+```sh
+npx skills list --global
+npx skills update interactive-knowledge --global
+```
+
+项目级安装使用 `npx skills list` 查看，使用 `npx skills update interactive-knowledge --project` 更新。安装后在编程助手的新对话中使用；应完整安装 Skill 目录，保留 `assets/`、`scripts/` 和 `references/`，只下载 `SKILL.md` 无法运行模板。
+
+如果需要直接维护源码、让多个本机客户端共用同一份仓库检出，使用[仓库软链接安装方式](https://github.com/iiLsss/diqiu-skills#唯一数据源与本机入口)。已采用该方式的机器继续在仓库执行 `git pull --ff-only` 更新，无需再执行上面的安装命令。
+
+## 在编程助手中使用
 
 新建作品时，说明知识点、学习对象和希望理解的关系，例如：
 
@@ -67,4 +98,4 @@ interactive-knowledge/
 
 生成项目中的 `node --test tests/*.test.mjs` 检查模型关系、输入边界、保存历史、版本冲突和 HTTP 写入限制；`node scripts/lab.mjs check demo` 检查项目数据。浏览器中的实际操作、预测、批注保存、刷新保留和手机布局需要单独验收。
 
-本仓库是唯一维护源，修改和提交在仓库中完成，其他机器通过 `git pull --ff-only` 更新。已生成项目是独立副本，不会随 Skill 更新自动升级。
+GitHub 仓库是唯一维护源，修改和提交在仓库中完成。通过 CLI 单独安装的版本使用 `npx skills update` 更新；链接到仓库检出的维护环境使用 `git pull --ff-only` 更新。已生成项目是独立副本，不会随 Skill 更新自动升级。
