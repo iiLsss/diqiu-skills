@@ -7,7 +7,7 @@
 直接把下面这段话发给你使用的编程 Agent：
 
 ```text
-请帮我将这个 Skill 安装到当前 Agent 的全局 Skills 目录，只安装 interactive-knowledge，保留完整的模板、脚本和参考资料，并确认安装后可以被发现：
+请帮我将这个 Skill 安装到当前 Agent 的全局 Skills 目录，只安装 interactive-knowledge，保留该 Skill 的完整目录及附带资源，并确认安装后可以被发现：
 https://github.com/iiLsss/diqiu-skills/tree/main/interactive-knowledge
 ```
 

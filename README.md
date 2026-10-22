@@ -31,6 +31,8 @@
 
 也可以直接描述任务，由 Agent 根据 skill 的触发条件决定是否使用。
 
+安装与使用见 [使用说明](guarded-delivery/README.md)，执行规则见 [Skill 说明](guarded-delivery/SKILL.md)。
+
 ### `adapt-frontend-project`
 
 低频、显式调用的前端仓库发现与适配 skill。它用于在高不确定性前先识别真实工程约定，再用一个代表性垂直切片验证后续方案。
@@ -54,6 +56,8 @@
 使用 $adapt-frontend-project 探索这个前端仓库，并先验证一个代表性垂直切片。
 ```
 
+安装与使用见 [使用说明](adapt-frontend-project/README.md)，执行规则见 [Skill 说明](adapt-frontend-project/SKILL.md)。
+
 ### `interactive-knowledge`
 
 把知识点或已有讲解制作成可运行的互动知识网页，支持操作验证、预测、按位置批注、定点修改和项目导出。包含独立 Node.js 20+ 模板、初始化脚本和模型及后端测试，无需安装 npm 包。
@@ -68,14 +72,16 @@
 
 ## 唯一数据源与本机入口
 
-本仓库是 `interactive-knowledge` 的唯一维护源，GitHub `main` 保存已提交版本。只想使用这一项 Skill，直接把下面这段话发给你的编程 Agent：
+本仓库是上述 Skills 的唯一维护源，GitHub `main` 保存已提交版本。每个 Skill 的 README 都提供可以直接发给编程 Agent 的单项安装指令。例如安装 `interactive-knowledge`：
 
 ```text
-请帮我将这个 Skill 安装到当前 Agent 的全局 Skills 目录，只安装 interactive-knowledge，保留完整的模板、脚本和参考资料，并确认安装后可以被发现：
+请帮我将这个 Skill 安装到当前 Agent 的全局 Skills 目录，只安装 interactive-knowledge，保留该 Skill 的完整目录及附带资源，并确认安装后可以被发现：
 https://github.com/iiLsss/diqiu-skills/tree/main/interactive-knowledge
 ```
 
-Agent 会使用自己的安装方式。项目级安装和可选的终端安装、更新命令见 [Skill 安装说明](interactive-knowledge/README.md#安装)。
+Agent 根据自己的安装机制完成操作。项目级安装时，把指令中的“全局 Skills 目录”改为“当前项目的 Skills 目录”。安装与更新的具体说明见各 Skill 的 README。
+
+### 本机维护环境（interactive-knowledge）
 
 本机维护环境的各客户端通过软链接使用当前仓库检出中的同一份文件，不再维护安装副本。修改在本仓库进行，验证后提交并推送；采用此方式的其他机器通过 `git pull --ff-only` 更新。生成的用户项目放在仓库之外。
 
@@ -104,12 +110,14 @@ DeepSeek Harness 使用共享入口 `~/.agents/skills`；Codex 和 Antigravity �
 .
 ├── README.md
 ├── adapt-frontend-project/
+│   ├── README.md                # 安装、使用与维护说明
 │   ├── SKILL.md                 # Skill 主说明与执行流程
 │   ├── agents/openai.yaml       # Agent 展示信息与默认提示词
 │   ├── assets/governance/       # 工程规范与 Agent 适配模板
 │   ├── references/              # 新建、既有项目和标准化流程
 │   └── scripts/                 # 项目上下文扫描工具
 ├── guarded-delivery/
+│   ├── README.md                # 安装、使用与维护说明
 │   ├── SKILL.md                 # Skill 主说明与执行流程
 │   ├── agents/openai.yaml       # Agent 展示信息与默认提示词
 │   └── references/              # 风险路由、项目模式和验证门槛
@@ -126,6 +134,7 @@ DeepSeek Harness 使用共享入口 `~/.agents/skills`；Codex 和 Antigravity �
 
 每个 skill 独立放在根目录下，并至少包含：
 
+- `README.md`：用途、直接发给 Agent 的安装指令、使用与维护说明
 - `SKILL.md`：名称、触发描述和完整工作流
 - `agents/openai.yaml`：面向 Agent 的展示信息
 - `references/`：仅在需要拆分详细规则时使用
